@@ -174,6 +174,16 @@ Item {
                         Button {
                             text: qsTr("Effacer")
                             Layout.fillWidth: true
+                            onClicked: {
+                                latDeg.text = ""
+                                latMin.text = ""
+                                latSec.text = ""
+                                latSecDec.text = ""
+                                lonDeg.text = ""
+                                lonMin.text = ""
+                                lonSec.text = ""
+                                lonSecDec.text = ""
+                            }
                         }
                     }
                     RowLayout {
@@ -252,6 +262,14 @@ Item {
                         Button {
                             text: qsTr("Effacer")
                             Layout.fillWidth: true
+                            onClicked: {
+                                ddmLatDeg.text = ""
+                                ddmLatMin.text = ""
+                                ddmLatDec.text = ""
+                                ddmLonDeg.text = ""
+                                ddmLonMin.text = ""
+                                ddmLonDec.text = ""
+                            }
                         }
                     }
                     RowLayout {
