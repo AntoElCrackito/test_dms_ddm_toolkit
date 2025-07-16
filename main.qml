@@ -126,12 +126,12 @@ Item {
 
                         // Latitude
                         Label { text: qsTr("Latitude"); Layout.row: 0; Layout.column: 0; Layout.alignment: Qt.AlignLeft }
-                        ComboBox { id: latCombo; model: [qsTr("N"), qsTr("S")]; Layout.preferredWidth: 50; Layout.row: 0; Layout.column: 1 }
-                        TextField { id: latDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 36; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 2
+                        ComboBox { id: latCombo; model: [qsTr("N"), qsTr("S")]; Layout.preferredWidth: 60; Layout.row: 0; Layout.column: 1 }
+                        TextField { id: latDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 2
                             onTextChanged: if (text.length === 2) latMin.forceActiveFocus()
                             Keys.onReturnPressed: latMin.forceActiveFocus()
                         }
-                        TextField { id: latMin; placeholderText: qsTr("'"); Layout.preferredWidth: 36; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 3
+                        TextField { id: latMin; placeholderText: qsTr("'"); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 3
                             onTextChanged: if (text.length === 2) latSec.forceActiveFocus()
                             Keys.onReturnPressed: latSec.forceActiveFocus()
                         }
@@ -140,13 +140,13 @@ Item {
                             Keys.onReturnPressed: latSecDec.forceActiveFocus()
                         }
                         Label { text: qsTr(","); font.pixelSize: 18; verticalAlignment: Text.AlignVCenter; Layout.row: 0; Layout.column: 5 }
-                        TextField { id: latSecDec; Layout.preferredWidth: 32; inputMethodHints: Qt.ImhFormattedNumbersOnly; Layout.row: 0; Layout.column: 6
+                        TextField { id: latSecDec; Layout.preferredWidth: 50; inputMethodHints: Qt.ImhFormattedNumbersOnly; Layout.row: 0; Layout.column: 6
                             Keys.onReturnPressed: lonDeg.forceActiveFocus()
                         }
                         // Longitude
                         Label { text: qsTr("Longitude"); Layout.row: 1; Layout.column: 0; Layout.alignment: Qt.AlignLeft }
-                        ComboBox { id: lonCombo; model: [qsTr("E"), qsTr("W")]; Layout.preferredWidth: 50; Layout.row: 1; Layout.column: 1 }
-                        TextField { id: lonDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 36; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 2
+                        ComboBox { id: lonCombo; model: [qsTr("E"), qsTr("W")]; Layout.preferredWidth: 60; Layout.row: 1; Layout.column: 1 }
+                        TextField { id: lonDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 2
                             onTextChanged: if (text.length === 2) lonMin.forceActiveFocus()
                             Keys.onReturnPressed: lonMin.forceActiveFocus()
                         }
@@ -212,22 +212,22 @@ Item {
 
                         // Latitude
                         Label { text: qsTr("Latitude"); Layout.row: 0; Layout.column: 0; Layout.alignment: Qt.AlignLeft }
-                        ComboBox { id: ddmLatCombo; model: [qsTr("N"), qsTr("S")]; Layout.preferredWidth: 50; Layout.row: 0; Layout.column: 1 }
-                        TextField { id: ddmLatDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 36; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 2
+                        ComboBox { id: ddmLatCombo; model: [qsTr("N"), qsTr("S")]; Layout.preferredWidth: 60; Layout.row: 0; Layout.column: 1 }
+                        TextField { id: ddmLatDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 2
                             onTextChanged: if (text.length === 2) ddmLatMin.forceActiveFocus()
                             Keys.onReturnPressed: ddmLatMin.forceActiveFocus()
                         }
-                        TextField { id: ddmLatMin; placeholderText: ""; Layout.preferredWidth: 36; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 3
+                        TextField { id: ddmLatMin; placeholderText: ""; Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 3
                             onTextChanged: if (text.length === 2) ddmLatDec.forceActiveFocus()
                             Keys.onReturnPressed: ddmLatDec.forceActiveFocus()
                         }
                         Label { text: qsTr("."); font.pixelSize: 18; verticalAlignment: Text.AlignVCenter; Layout.row: 0; Layout.column: 4 }
-                        TextField { id: ddmLatDec; placeholderText: ""; Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 5
+                        TextField { id: ddmLatDec; placeholderText: ""; Layout.preferredWidth: 65; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 5
                             Keys.onReturnPressed: ddmLonDeg.forceActiveFocus()
                         }
                         // Longitude
                         Label { text: qsTr("Longitude"); Layout.row: 1; Layout.column: 0; Layout.alignment: Qt.AlignLeft }
-                        ComboBox { id: ddmLonCombo; model: [qsTr("E"), qsTr("W")]; Layout.preferredWidth: 50; Layout.row: 1; Layout.column: 1 }
+                        ComboBox { id: ddmLonCombo; model: [qsTr("E"), qsTr("W")]; Layout.preferredWidth: 60; Layout.row: 1; Layout.column: 1 }
                         TextField { id: ddmLonDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 36; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 2
                             onTextChanged: if (text.length === 2) ddmLonMin.forceActiveFocus()
                             Keys.onReturnPressed: ddmLonMin.forceActiveFocus()
