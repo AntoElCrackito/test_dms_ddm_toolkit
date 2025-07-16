@@ -150,7 +150,7 @@ Item {
                             onTextChanged: if (text.length === 2) lonMin.forceActiveFocus()
                             Keys.onReturnPressed: lonMin.forceActiveFocus()
                         }
-                        TextField { id: lonMin; placeholderText: qsTr("'"); Layout.preferredWidth: 36; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 3
+                        TextField { id: lonMin; placeholderText: qsTr("'"); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 3
                             onTextChanged: if (text.length === 2) lonSec.forceActiveFocus()
                             Keys.onReturnPressed: lonSec.forceActiveFocus()
                         }
@@ -159,7 +159,7 @@ Item {
                             Keys.onReturnPressed: lonSecDec.forceActiveFocus()
                         }
                         Label { text: qsTr(","); font.pixelSize: 18; verticalAlignment: Text.AlignVCenter; Layout.row: 1; Layout.column: 5 }
-                        TextField { id: lonSecDec; Layout.preferredWidth: 32; inputMethodHints: Qt.ImhFormattedNumbersOnly; Layout.row: 1; Layout.column: 6
+                        TextField { id: lonSecDec; Layout.preferredWidth: 50; inputMethodHints: Qt.ImhFormattedNumbersOnly; Layout.row: 1; Layout.column: 6
                             Keys.onReturnPressed: latCombo.forceActiveFocus()
                         }
                     }
@@ -228,16 +228,16 @@ Item {
                         // Longitude
                         Label { text: qsTr("Longitude"); Layout.row: 1; Layout.column: 0; Layout.alignment: Qt.AlignLeft }
                         ComboBox { id: ddmLonCombo; model: [qsTr("E"), qsTr("W")]; Layout.preferredWidth: 60; Layout.row: 1; Layout.column: 1 }
-                        TextField { id: ddmLonDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 36; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 2
+                        TextField { id: ddmLonDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 2
                             onTextChanged: if (text.length === 2) ddmLonMin.forceActiveFocus()
                             Keys.onReturnPressed: ddmLonMin.forceActiveFocus()
                         }
-                        TextField { id: ddmLonMin; placeholderText: ""; Layout.preferredWidth: 36; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 3
+                        TextField { id: ddmLonMin; placeholderText: ""; Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 3
                             onTextChanged: if (text.length === 2) ddmLonDec.forceActiveFocus()
                             Keys.onReturnPressed: ddmLonDec.forceActiveFocus()
                         }
                         Label { text: qsTr("."); font.pixelSize: 18; verticalAlignment: Text.AlignVCenter; Layout.row: 1; Layout.column: 4 }
-                        TextField { id: ddmLonDec; placeholderText: ""; Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 5
+                        TextField { id: ddmLonDec; placeholderText: ""; Layout.preferredWidth: 65; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 5
                             Keys.onReturnPressed: ddmLatCombo.forceActiveFocus()
                         }
                     }
