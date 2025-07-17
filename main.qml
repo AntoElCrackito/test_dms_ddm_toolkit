@@ -143,11 +143,6 @@ Item {
                             }
                             onTextChanged: if (text.length === 2) latMin.forceActiveFocus()
                             Keys.onReturnPressed: latMin.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Latitude (degrés) doit être comprise entre 0 et 90."))
-                                }
-                            }
                         }
                         TextField {
                             id: latMin
@@ -165,11 +160,6 @@ Item {
                             }
                             onTextChanged: if (text.length === 2) latSec.forceActiveFocus()
                             Keys.onReturnPressed: latSec.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Latitude (minutes) doit être comprise entre 0 et 59."))
-                                }
-                            }
                         }
                         TextField {
                             id: latSec
@@ -187,11 +177,6 @@ Item {
                             }
                             onTextChanged: if (text.length === 2) latSecDec.forceActiveFocus()
                             Keys.onReturnPressed: latSecDec.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Latitude (secondes) doit être comprise entre 0 et 59."))
-                                }
-                            }
                         }
                         Label { text: qsTr(","); font.pixelSize: 18; verticalAlignment: Text.AlignVCenter; Layout.row: 0; Layout.column: 5 }
                         TextField {
@@ -208,11 +193,6 @@ Item {
                                 radius: 4
                             }
                             Keys.onReturnPressed: lonDeg.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Latitude (décimales) doit être comprise entre 0 et 99."))
-                                }
-                            }
                         }
                         // Longitude
                         Label { text: qsTr("Longitude"); Layout.row: 1; Layout.column: 0; Layout.alignment: Qt.AlignLeft }
@@ -233,11 +213,6 @@ Item {
                             }
                             onTextChanged: if (text.length === 2) lonMin.forceActiveFocus()
                             Keys.onReturnPressed: lonMin.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Longitude (degrés) doit être comprise entre 0 et 180."))
-                                }
-                            }
                         }
                         TextField {
                             id: lonMin
@@ -255,11 +230,6 @@ Item {
                             }
                             onTextChanged: if (text.length === 2) lonSec.forceActiveFocus()
                             Keys.onReturnPressed: lonSec.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Longitude (minutes) doit être comprise entre 0 et 59."))
-                                }
-                            }
                         }
                         TextField {
                             id: lonSec
@@ -277,11 +247,6 @@ Item {
                             }
                             onTextChanged: if (text.length === 2) lonSecDec.forceActiveFocus()
                             Keys.onReturnPressed: lonSecDec.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Longitude (secondes) doit être comprise entre 0 et 59."))
-                                }
-                            }
                         }
                         Label { text: qsTr(","); font.pixelSize: 18; verticalAlignment: Text.AlignVCenter; Layout.row: 1; Layout.column: 5 }
                         TextField {
@@ -298,11 +263,6 @@ Item {
                                 radius: 4
                             }
                             Keys.onReturnPressed: latCombo.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Longitude (décimales) doit être comprise entre 0 et 99."))
-                                }
-                            }
                         }
                     }
 
@@ -312,6 +272,11 @@ Item {
                         Button {
                             text: qsTr("Définir comme destination")
                             Layout.fillWidth: true
+                            enabled: 
+                                latDeg.acceptableInput &&
+                                latMin.acceptableInput &&
+                                lonDeg.acceptableInput &&
+                                lonMin.acceptableInput
                             onClicked: {
                                 let lat_deg = parseInt(latDeg.text)
                                 let lat_min = parseInt(latMin.text || "0")
@@ -416,11 +381,6 @@ Item {
                             }
                             onTextChanged: if (text.length === 2) ddmLatMin.forceActiveFocus()
                             Keys.onReturnPressed: ddmLatMin.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Latitude (degrés) doit être comprise entre 0 et 90."))
-                                }
-                            }
                         }
                         TextField {
                             id: ddmLatMin
@@ -438,11 +398,6 @@ Item {
                             }
                             onTextChanged: if (text.length === 2) ddmLatDec.forceActiveFocus()
                             Keys.onReturnPressed: ddmLatDec.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Latitude (minutes) doit être comprise entre 0 et 59."))
-                                }
-                            }
                         }
                         Label { text: qsTr("."); font.pixelSize: 18; verticalAlignment: Text.AlignVCenter; Layout.row: 0; Layout.column: 4 }
                         TextField {
@@ -460,11 +415,6 @@ Item {
                                 radius: 4
                             }
                             Keys.onReturnPressed: ddmLonDeg.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Latitude (décimales de minutes) doit être comprise entre 0 et 999."))
-                                }
-                            }
                         }
                         // Longitude
                         Label { text: qsTr("Longitude"); Layout.row: 1; Layout.column: 0; Layout.alignment: Qt.AlignLeft }
@@ -485,11 +435,6 @@ Item {
                             }
                             onTextChanged: if (text.length === 2) ddmLonMin.forceActiveFocus()
                             Keys.onReturnPressed: ddmLonMin.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Longitude (degrés) doit être comprise entre 0 et 180."))
-                                }
-                            }
                         }
                         TextField {
                             id: ddmLonMin
@@ -507,11 +452,6 @@ Item {
                             }
                             onTextChanged: if (text.length === 2) ddmLonDec.forceActiveFocus()
                             Keys.onReturnPressed: ddmLonDec.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Longitude (minutes) doit être comprise entre 0 et 59."))
-                                }
-                            }
                         }
                         Label { text: qsTr("."); font.pixelSize: 18; verticalAlignment: Text.AlignVCenter; Layout.row: 1; Layout.column: 4 }
                         TextField {
@@ -529,11 +469,6 @@ Item {
                                 radius: 4
                             }
                             Keys.onReturnPressed: ddmLatCombo.forceActiveFocus()
-                            onEditingFinished: {
-                                if (!acceptableInput && text.length > 0) {
-                                    mainWindow.displayToast(qsTr("Longitude (décimales de minutes) doit être comprise entre 0 et 999."))
-                                }
-                            }
                         }
                     }
 
@@ -543,6 +478,11 @@ Item {
                         Button {
                             text: qsTr("Définir comme destination")
                             Layout.fillWidth: true
+                            enabled:
+                                ddmLatDeg.acceptableInput &&
+                                ddmLatMin.acceptableInput &&
+                                ddmLonDeg.acceptableInput &&
+                                ddmLonMin.acceptableInput
                             onClicked: {
                                 let lat_deg = parseInt(ddmLatDeg.text)
                                 let lat_min = parseInt(ddmLatMin.text || "0")
