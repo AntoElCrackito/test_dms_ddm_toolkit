@@ -127,40 +127,182 @@ Item {
                         // Latitude
                         Label { text: qsTr("Latitude"); Layout.row: 0; Layout.column: 0; Layout.alignment: Qt.AlignLeft }
                         ComboBox { id: latCombo; model: [qsTr("N"), qsTr("S")]; Layout.preferredWidth: 60; Layout.row: 0; Layout.column: 1 }
-                        TextField { id: latDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 2
+                        TextField {
+                            id: latDeg
+                            placeholderText: qsTr("°")
+                            Layout.preferredWidth: 40
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 0; Layout.column: 2
+                            validator: IntValidator { bottom: 0; top: 90 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             onTextChanged: if (text.length === 2) latMin.forceActiveFocus()
                             Keys.onReturnPressed: latMin.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Latitude (degrés) doit être comprise entre 0 et 90."))
+                                }
+                            }
                         }
-                        TextField { id: latMin; placeholderText: qsTr("'"); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 3
+                        TextField {
+                            id: latMin
+                            placeholderText: qsTr("'")
+                            Layout.preferredWidth: 40
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 0; Layout.column: 3
+                            validator: IntValidator { bottom: 0; top: 59 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             onTextChanged: if (text.length === 2) latSec.forceActiveFocus()
                             Keys.onReturnPressed: latSec.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Latitude (minutes) doit être comprise entre 0 et 59."))
+                                }
+                            }
                         }
-                        TextField { id: latSec; placeholderText: qsTr("\""); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 4
+                        TextField {
+                            id: latSec
+                            placeholderText: qsTr("\"")
+                            Layout.preferredWidth: 40
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 0; Layout.column: 4
+                            validator: IntValidator { bottom: 0; top: 59 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             onTextChanged: if (text.length === 2) latSecDec.forceActiveFocus()
                             Keys.onReturnPressed: latSecDec.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Latitude (secondes) doit être comprise entre 0 et 59."))
+                                }
+                            }
                         }
                         Label { text: qsTr(","); font.pixelSize: 18; verticalAlignment: Text.AlignVCenter; Layout.row: 0; Layout.column: 5 }
-                        TextField { id: latSecDec; Layout.preferredWidth: 50; inputMethodHints: Qt.ImhFormattedNumbersOnly; Layout.row: 0; Layout.column: 6
+                        TextField {
+                            id: latSecDec
+                            Layout.preferredWidth: 50
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 0; Layout.column: 6
+                            validator: IntValidator { bottom: 0; top: 99 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             Keys.onReturnPressed: lonDeg.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Latitude (décimales) doit être comprise entre 0 et 99."))
+                                }
+                            }
                         }
                         // Longitude
                         Label { text: qsTr("Longitude"); Layout.row: 1; Layout.column: 0; Layout.alignment: Qt.AlignLeft }
                         ComboBox { id: lonCombo; model: [qsTr("E"), qsTr("W")]; Layout.preferredWidth: 60; Layout.row: 1; Layout.column: 1 }
-                        TextField { id: lonDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 2
+                        TextField {
+                            id: lonDeg
+                            placeholderText: qsTr("°")
+                            Layout.preferredWidth: 40
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 1; Layout.column: 2
+                            validator: IntValidator { bottom: 0; top: 180 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             onTextChanged: if (text.length === 2) lonMin.forceActiveFocus()
                             Keys.onReturnPressed: lonMin.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Longitude (degrés) doit être comprise entre 0 et 180."))
+                                }
+                            }
                         }
-                        TextField { id: lonMin; placeholderText: qsTr("'"); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 3
+                        TextField {
+                            id: lonMin
+                            placeholderText: qsTr("'")
+                            Layout.preferredWidth: 40
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 1; Layout.column: 3
+                            validator: IntValidator { bottom: 0; top: 59 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             onTextChanged: if (text.length === 2) lonSec.forceActiveFocus()
                             Keys.onReturnPressed: lonSec.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Longitude (minutes) doit être comprise entre 0 et 59."))
+                                }
+                            }
                         }
-                        TextField { id: lonSec; placeholderText: qsTr("\""); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 4
+                        TextField {
+                            id: lonSec
+                            placeholderText: qsTr("\"")
+                            Layout.preferredWidth: 40
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 1; Layout.column: 4
+                            validator: IntValidator { bottom: 0; top: 59 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             onTextChanged: if (text.length === 2) lonSecDec.forceActiveFocus()
                             Keys.onReturnPressed: lonSecDec.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Longitude (secondes) doit être comprise entre 0 et 59."))
+                                }
+                            }
                         }
                         Label { text: qsTr(","); font.pixelSize: 18; verticalAlignment: Text.AlignVCenter; Layout.row: 1; Layout.column: 5 }
-                        TextField { id: lonSecDec; Layout.preferredWidth: 50; inputMethodHints: Qt.ImhFormattedNumbersOnly; Layout.row: 1; Layout.column: 6
+                        TextField {
+                            id: lonSecDec
+                            Layout.preferredWidth: 50
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 1; Layout.column: 6
+                            validator: IntValidator { bottom: 0; top: 99 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             Keys.onReturnPressed: latCombo.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Longitude (décimales) doit être comprise entre 0 et 99."))
+                                }
+                            }
                         }
                     }
 
@@ -170,6 +312,41 @@ Item {
                         Button {
                             text: qsTr("Définir comme destination")
                             Layout.fillWidth: true
+                            onClicked: {
+                                let lat_deg = parseInt(latDeg.text)
+                                let lat_min = parseInt(latMin.text || "0")
+                                let lat_sec_full = parseFloat(latSec.text || "0") + parseFloat("0." + (latSecDec.text || "0"))
+                                let lon_deg = parseInt(lonDeg.text)
+                                let lon_min = parseInt(lonMin.text || "0")
+                                let lon_sec_full = parseFloat(lonSec.text || "0") + parseFloat("0." + (lonSecDec.text || "0"))
+
+                                if (isNaN(lat_deg) || isNaN(lon_deg)) {
+                                    mainWindow.displayToast(qsTr("Merci d'entrer au moins une valeur pour les degrés (°)."))
+                                    return
+                                }
+
+                                function dmsToDecimal(deg, min, sec, sens) {
+                                    let decimal = deg + (min / 60.0) + (sec / 3600.0)
+                                    if (sens === qsTr("S") || sens === qsTr("W")) decimal = -decimal
+                                    return decimal
+                                }
+                                let lat = dmsToDecimal(lat_deg, lat_min, lat_sec_full, latCombo.currentText)
+                                let lon = dmsToDecimal(lon_deg, lon_min, lon_sec_full, lonCombo.currentText)
+
+                                var crsIN = CoordinateReferenceSystemUtils.fromDescription("EPSG:4326")
+                                var crsOUT = CoordinateReferenceSystemUtils.fromDescription("EPSG:" + canvasEPSG)
+                                var pt = GeometryUtils.point(lon, lat)
+                                var projected = GeometryUtils.reprojectPoint(pt, crsIN, crsOUT)
+
+                                let navigation = iface.findItemByObjectName('navigation');
+                                if (navigation) {
+                                    navigation.destination = projected
+                                    mainWindow.displayToast(qsTr("Destination définie selon les coordonnées DMS entrées."));
+                                } else {
+                                    mainWindow.displayToast(qsTr("Navigation non disponible. Vérifier que la position est activée sur votre appareil."));
+                                }
+                                plugin.showPanel = false
+                            }
                         }
                         Button {
                             text: qsTr("Effacer")
@@ -223,32 +400,140 @@ Item {
                         // Latitude
                         Label { text: qsTr("Latitude"); Layout.row: 0; Layout.column: 0; Layout.alignment: Qt.AlignLeft }
                         ComboBox { id: ddmLatCombo; model: [qsTr("N"), qsTr("S")]; Layout.preferredWidth: 60; Layout.row: 0; Layout.column: 1 }
-                        TextField { id: ddmLatDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 2
+                        TextField {
+                            id: ddmLatDeg
+                            placeholderText: qsTr("°")
+                            Layout.preferredWidth: 40
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 0; Layout.column: 2
+                            validator: IntValidator { bottom: 0; top: 90 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             onTextChanged: if (text.length === 2) ddmLatMin.forceActiveFocus()
                             Keys.onReturnPressed: ddmLatMin.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Latitude (degrés) doit être comprise entre 0 et 90."))
+                                }
+                            }
                         }
-                        TextField { id: ddmLatMin; placeholderText: ""; Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 3
+                        TextField {
+                            id: ddmLatMin
+                            placeholderText: ""
+                            Layout.preferredWidth: 40
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 0; Layout.column: 3
+                            validator: IntValidator { bottom: 0; top: 59 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             onTextChanged: if (text.length === 2) ddmLatDec.forceActiveFocus()
                             Keys.onReturnPressed: ddmLatDec.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Latitude (minutes) doit être comprise entre 0 et 59."))
+                                }
+                            }
                         }
                         Label { text: qsTr("."); font.pixelSize: 18; verticalAlignment: Text.AlignVCenter; Layout.row: 0; Layout.column: 4 }
-                        TextField { id: ddmLatDec; placeholderText: ""; Layout.preferredWidth: 65; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 0; Layout.column: 5
+                        TextField {
+                            id: ddmLatDec
+                            placeholderText: ""
+                            Layout.preferredWidth: 65
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 0; Layout.column: 5
+                            validator: IntValidator { bottom: 0; top: 999 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             Keys.onReturnPressed: ddmLonDeg.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Latitude (décimales de minutes) doit être comprise entre 0 et 999."))
+                                }
+                            }
                         }
                         // Longitude
                         Label { text: qsTr("Longitude"); Layout.row: 1; Layout.column: 0; Layout.alignment: Qt.AlignLeft }
                         ComboBox { id: ddmLonCombo; model: [qsTr("E"), qsTr("W")]; Layout.preferredWidth: 60; Layout.row: 1; Layout.column: 1 }
-                        TextField { id: ddmLonDeg; placeholderText: qsTr("°"); Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 2
+                        TextField {
+                            id: ddmLonDeg
+                            placeholderText: qsTr("°")
+                            Layout.preferredWidth: 40
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 1; Layout.column: 2
+                            validator: IntValidator { bottom: 0; top: 180 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             onTextChanged: if (text.length === 2) ddmLonMin.forceActiveFocus()
                             Keys.onReturnPressed: ddmLonMin.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Longitude (degrés) doit être comprise entre 0 et 180."))
+                                }
+                            }
                         }
-                        TextField { id: ddmLonMin; placeholderText: ""; Layout.preferredWidth: 40; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 3
+                        TextField {
+                            id: ddmLonMin
+                            placeholderText: ""
+                            Layout.preferredWidth: 40
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 1; Layout.column: 3
+                            validator: IntValidator { bottom: 0; top: 59 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             onTextChanged: if (text.length === 2) ddmLonDec.forceActiveFocus()
                             Keys.onReturnPressed: ddmLonDec.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Longitude (minutes) doit être comprise entre 0 et 59."))
+                                }
+                            }
                         }
                         Label { text: qsTr("."); font.pixelSize: 18; verticalAlignment: Text.AlignVCenter; Layout.row: 1; Layout.column: 4 }
-                        TextField { id: ddmLonDec; placeholderText: ""; Layout.preferredWidth: 65; inputMethodHints: Qt.ImhDigitsOnly; Layout.row: 1; Layout.column: 5
+                        TextField {
+                            id: ddmLonDec
+                            placeholderText: ""
+                            Layout.preferredWidth: 65
+                            inputMethodHints: Qt.ImhDigitsOnly
+                            Layout.row: 1; Layout.column: 5
+                            validator: IntValidator { bottom: 0; top: 999 }
+                            property bool isError: !acceptableInput && text.length > 0
+                            background: Rectangle {
+                                color: "white"
+                                border.color: parent.isError ? "red" : "#cccccc"
+                                border.width: 1
+                                radius: 4
+                            }
                             Keys.onReturnPressed: ddmLatCombo.forceActiveFocus()
+                            onEditingFinished: {
+                                if (!acceptableInput && text.length > 0) {
+                                    mainWindow.displayToast(qsTr("Longitude (décimales de minutes) doit être comprise entre 0 et 999."))
+                                }
+                            }
                         }
                     }
 
@@ -258,6 +543,42 @@ Item {
                         Button {
                             text: qsTr("Définir comme destination")
                             Layout.fillWidth: true
+                            onClicked: {
+                                let lat_deg = parseInt(ddmLatDeg.text)
+                                let lat_min = parseInt(ddmLatMin.text || "0")
+                                let lat_dec = parseInt(ddmLatDec.text || "0")
+                                let lon_deg = parseInt(ddmLonDeg.text)
+                                let lon_min = parseInt(ddmLonMin.text || "0")
+                                let lon_dec = parseInt(ddmLonDec.text || "0")
+
+                                if (isNaN(lat_deg) || isNaN(lon_deg)) {
+                                    mainWindow.displayToast(qsTr("Merci d'entrer au moins une valeur pour les degrés (°)."))
+                                    return
+                                }
+
+                                function ddmToDecimal(deg, min, dec, sens) {
+                                    let minutes = min + (dec / Math.pow(10, dec.toString().length));
+                                    let decimal = deg + (minutes / 60.0)
+                                    if (sens === qsTr("S") || sens === qsTr("W")) decimal = -decimal
+                                    return decimal
+                                }
+                                let lat = ddmToDecimal(lat_deg, lat_min, lat_dec, ddmLatCombo.currentText)
+                                let lon = ddmToDecimal(lon_deg, lon_min, lon_dec, ddmLonCombo.currentText)
+
+                                var crsIN = CoordinateReferenceSystemUtils.fromDescription("EPSG:4326")
+                                var crsOUT = CoordinateReferenceSystemUtils.fromDescription("EPSG:" + canvasEPSG)
+                                var pt = GeometryUtils.point(lon, lat)
+                                var projected = GeometryUtils.reprojectPoint(pt, crsIN, crsOUT)
+
+                                let navigation = iface.findItemByObjectName('navigation');
+                                if (navigation) {
+                                    navigation.destination = projected
+                                    mainWindow.displayToast(qsTr("Destination définie selon les coordonnées DDM entrées."));
+                                } else {
+                                    mainWindow.displayToast(qsTr("Navigation non disponible. Vérifier que la position est activée sur votre appareil."));
+                                }
+                                plugin.showPanel = false
+                            }
                         }
                         Button {
                             text: qsTr("Effacer")

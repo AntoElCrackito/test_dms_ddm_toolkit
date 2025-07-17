@@ -1,7 +1,7 @@
 [general]
 name=DMS/DDM and Lambert93 Toolkit
-description=This plugin lets you set a destination from DMS or DDM coordinates and convert Lambert93 coordinates to DMS or DDM.
+description=Ce plugin permet de placer une destination selon des coordonnées DMS ou DDM. Il permet également de transformer des coordonnées Lambert93 en DDM ou DMS. This plugin lets you set a destination from DMS or DDM coordinates and convert Lambert93 coordinates to DMS or DDM.
 author=BOYER Antoine
 icon=icon.svg
-version=1.0
+version=1.1
 homepage=https://github.com/AntoElCrackito/DMS_DDM_and_Lambert93_Toolkit
